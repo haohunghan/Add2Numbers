@@ -1,3 +1,9 @@
+/*
+    File that take data from index.html
+    Counting the result
+*/
+
+
 package com.tutorial.simpleservletform;
 
 import java.io.IOException;
