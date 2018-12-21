@@ -15,6 +15,37 @@ interface IReceiver{
 public class MyBigNumber implements Require {                                                                        
     
     public  String sum(final String s1, final String s2){
+	    
+	//Check exception    
+	try {
+            
+            // check string s1
+            for (char c: s1.toCharArray()) {
+                if (c - '0' < 0 || c - '0' > 9) {
+                    throw new ParameterFormatException(s1);
+                }
+            }
+
+            // Check string s2
+            for (char c: s2.toCharArray()) {
+                if (c - '0' < 0 || c - '0' > 9) {
+                    throw new ParameterFormatException(s2);
+                }
+            }
+        } catch (ParameterFormatException ex) {
+            System.out.println(ex);
+            return "ParameterFormatException";
+        }    
+	    
+	//Check number > 0
+	if (s1.contains("-")) {
+            throw new NumberFormatException("So thu nhat phai la so nguyen duong");
+        }
+
+        if (s2.contains("-")) {
+            throw new NumberFormatException("So thu nhi phai la so nguyen duong");
+        }    
+	    
         
         // Buoc 1: lay do dai 2 chuo
         
