@@ -11,3 +11,8 @@ How to run:
 1. Download eclipse from https://www.eclipse.org/downloads
 2. Install and choose the version: "Eclipse IDE for Java EE Developers(Tool for Java developers creating Enterprise Java and Web applications, including a java IDE, tool for Enterprise Java, JPA, JFS, Mylyn, Marven, Git and....
 3. Open the project
+
+==============================================================================================
+The are 2 ways to have the error: 
+  1. String s1 or s2 contains '-' 
+  2. String s1 or s2 have character that is not a number.
