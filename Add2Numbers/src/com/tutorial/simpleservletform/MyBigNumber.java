@@ -1,54 +1,56 @@
-package com.tutorial.simpleservletform;
+
 
 /**
  *
  * @author Hao Nguyen
- * A function that add 2 number
+ * A function that add 2 very big number
  */
 
-import java.util.Scanner;
+package com.tutorial.simpleservletform;
 
-interface IReceiver{
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 	
-}
 
-public class MyBigNumber implements Require {                                                                        
+public class MyBigNumber {
+	
+
+	private IReceiver ireceiver;
     
-    public  String sum(final String s1, final String s2){
-	    
-	//Check exception    
-	try {
-            
-            // check string s1
-            for (char c: s1.toCharArray()) {
-                if (c - '0' < 0 || c - '0' > 9) {
-                    throw new ParameterFormatException(s1);
-                }
-            }
-
-            // Check string s2
-            for (char c: s2.toCharArray()) {
-                if (c - '0' < 0 || c - '0' > 9) {
-                    throw new ParameterFormatException(s2);
-                }
-            }
-        } catch (ParameterFormatException ex) {
-            System.out.println(ex);
-            return "ParameterFormatException";
-        }    
-	    
-	//Check number > 0
-	if (s1.contains("-")) {
-            throw new NumberFormatException("So thu nhat phai la so nguyen duong");
+    //Ham de goi tung buoc
+	public MyBigNumber(final IReceiver ireceiver) {
+        this.ireceiver = ireceiver;
+    }
+     
+    public String sum(final String s1, final String s2){
+        
+        Pattern p = Pattern.compile("\\D"); // Chuỗi đại diện cho kí tự số từ [0-9]
+        final Matcher m1 = p.matcher(s1);
+        final Matcher m2 = p.matcher(s2);
+       
+        //Kiem tra so am
+        if (s1.contains("-")) {
+            this.ireceiver.sendMessage("First nubmer must be positive integer");
+            throw new NumberFormatException("First nubmer must be positive integer");
         }
-
         if (s2.contains("-")) {
-            throw new NumberFormatException("So thu nhi phai la so nguyen duong");
-        }    
-	    
+            this.ireceiver.sendMessage("Second number must be positive integer");
+            throw new NumberFormatException("Second number must be positive integer");
+        }
+        
+        // Kiểm tra kí tự đặc biệt hoặc chữ
+        if (m1.find()) {
+            this.ireceiver.sendMessage("Please does not contain any character in first number : " + s1);
+            throw new NumberFormatException(m1.start() + 1 + "");   
+        }
+        
+        if (m2.find()) {
+            this.ireceiver.sendMessage("Please does not contain any character in second number : " + s2);
+            throw new NumberFormatException(m2.start() + 1 + "");
+        }
+        
         
         // Buoc 1: lay do dai 2 chuo
-        
         String result = "";
         int length1 = s1.length();// do dai chuoi thu 1
         int length2 = s2.length();// do dai chuoi thu 2
@@ -108,14 +110,16 @@ public class MyBigNumber implements Require {
             temp = sum / 10;
             
             direction += ". current result: " + (result) + ".\n"; //(sum+=temp) + result = kq hien tai
-            
-        }
+           
+    }
 
         if (temp >= 1) {
             result = 1 + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
         }
-
-        return direction + "result: " + result;// Trả về kết quả thu được
+        
+        this.ireceiver.sendMessage(direction);
+        
+        return "Final result: " + result;// Trả về kết quả thu được
     }
-    
+	
 }
