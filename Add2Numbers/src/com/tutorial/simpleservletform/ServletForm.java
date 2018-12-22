@@ -1,3 +1,4 @@
+
 /*
     File that take data from index.html
     Counting the result
@@ -18,8 +19,9 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ServletForm
  */
+
 @WebServlet("/ServletForm")
-public class ServletForm extends HttpServlet {
+public class ServletForm extends HttpServlet implements IReceiver {
 	private static final long serialVersionUID = 1L;
 
     /**
@@ -36,7 +38,7 @@ public class ServletForm extends HttpServlet {
 		// TODO Auto-generated method stub
 		String firstNumber = request.getParameter("firstNumber");
 		String secondNumber = request.getParameter("secondNumber");
-		MyBigNumber mbn = new MyBigNumber();
+		MyBigNumber mbn = new MyBigNumber(this);
 		String direction = mbn.sum(firstNumber, secondNumber);
 		
 		response.setContentType("text/plaine");
@@ -50,7 +52,9 @@ public class ServletForm extends HttpServlet {
 			out.println("<body>");*/
 			out.println(firstNumber + " + " +  secondNumber );
 			//out.println("<br>");
+			out.println(step);
 			out.println(direction);
+			
 			//out.println("</body>");
 			//out.println("</html>");
 	}
@@ -61,6 +65,12 @@ public class ServletForm extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+
+	String step = "";
+	@Override
+	public void sendMessage(String message) {
+		step += message;
 	}
 
 }
