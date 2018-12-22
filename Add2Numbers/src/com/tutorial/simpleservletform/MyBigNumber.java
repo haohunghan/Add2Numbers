@@ -22,6 +22,7 @@ public class MyBigNumber {
         this.ireceiver = ireceiver;
     }
      
+    //Function that add 2 numbers
     public String sum(final String s1, final String s2){
         
         Pattern p = Pattern.compile("\\D"); // Chuỗi đại diện cho kí tự số từ [0-9]
