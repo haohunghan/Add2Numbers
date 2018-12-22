@@ -115,6 +115,7 @@ public class MyBigNumber {
     }
 
         if (temp >= 1) {
+	    direction += "1" + " + 0 = 1. Write 1." ;
             result = 1 + result;// Nếu số nhớ còn dư thì ghép vào chuỗi kết quả
         }
         
