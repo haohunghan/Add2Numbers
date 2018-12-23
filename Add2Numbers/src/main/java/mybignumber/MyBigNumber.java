@@ -133,7 +133,7 @@ public class MyBigNumber {
                        ". Write " + (sum%10) + " remember " + sum/10;
                       
            }
-           else{
+           else {
                direction += c1 + " + " + c2 + " = " + sum + " + " + temp + " = " + (sum + temp) +
                        ". Write " + (sum%10 + temp) + " remember " + sum/10;
                       
