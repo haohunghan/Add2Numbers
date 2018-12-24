@@ -19,7 +19,7 @@ Cách sử dụng:
 2. Chạy trên cmd
   2.1 Chạy ở folder desktop
     2.11 Download file này: https://github.com/haohunghan/Add2Numbers/blob/master/Add2Numbers/src/main/java/mybignumber/MyBigNumber.java và lưu ngoài desktop.
-    2.1.2 Mở cmd, gõ lệnh: cd desktop
+    2.1.2 Mở cmd, gõ lệnh: cd desktop.
     2.1.3 Gõ tiếp lệnh: javac MyBigNumber.java   enter
                       java MyBigNumber.class 45 99987
                       *2 số sau dòng .class là do bạn chọn
