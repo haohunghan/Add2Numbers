@@ -42,15 +42,15 @@ public class MyBigNumber {
        
        //check two number is empty or not
        // if it is null make it = "0"
-       if ((s1 == null) || (s1.trim().isEmpty())) {
+       if ( s1.isEmpty() ) {
            s1 = "0";
        }
-       if ((s2 == null) || (s2.trim().isEmpty())) {
+       if ( s2.isEmpty() ) {
            s2 = "0";
        }
        
      //Check whether the number is negative
-       if (s1.charAt(0) == '-' && s2.charAt(0) != '-') {
+       if ( s1.charAt(0) == '-' && s2.charAt(0) != '-') {
            posError = 1;
            this.ireceiver.sendMessage("First number must be a positive number: " + s1);
            throw new NumberFormatException("Error location at: " + posError 
@@ -66,9 +66,9 @@ public class MyBigNumber {
            posError = 1;
            this.ireceiver.sendMessage("Both of 2 number must be a positive number : " + s1 + " and " + s2);
            throw new NumberFormatException("Error location at: " + posError 
-                   + " of string " + s1 + " and " + s2 + " is not a number");
+                   						+ " of string " + s1 + " and " + s2 + " is not a positive number");
        }
-      
+             
        
        // Checking special character
        if (m1.find()) {
@@ -132,7 +132,8 @@ public class MyBigNumber {
                direction += c1 + " + " + c2 + " = " + sum + 
                        ". Write " + (sum%10) + " remember " + sum/10;
                       
-           } else {
+           }
+           else{
                direction += c1 + " + " + c2 + " = " + sum + " + " + temp + " = " + (sum + temp) +
                        ". Write " + (sum%10 + temp) + " remember " + sum/10;
                       
@@ -155,5 +156,4 @@ public class MyBigNumber {
        
        return result.trim();//Return the final result
    }
-	
 }
