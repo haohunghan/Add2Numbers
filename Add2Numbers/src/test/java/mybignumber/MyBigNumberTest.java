@@ -165,6 +165,30 @@ class MyBigNumberTest implements IReceiver {
     	});
 	}
 	
+	@Test
+	void testSum_19() {
+		listCase.add("Null + number");
+		MyBigNumber mbn = new MyBigNumber(this);
+		String sum = mbn.sum("null", "987");
+		assertEquals("987", sum);
+	}
+	
+	@Test
+	void testSum_20() {
+		listCase.add("Number + null");
+		MyBigNumber mbn = new MyBigNumber(this);
+		String sum = mbn.sum("987", "null");
+		assertEquals("987", sum);
+	}
+	
+	@Test
+	void testSum_21() {
+		listCase.add("Null + null");
+		MyBigNumber mbn = new MyBigNumber(this);
+		String sum = mbn.sum("null", "null");
+		assertEquals("0", sum);
+	}
+	
 	@Override
 	public void sendMessage(String message) {
 		// TODO Auto-generated method stub
@@ -174,6 +198,4 @@ class MyBigNumberTest implements IReceiver {
 		
 	}
 	
-	
-
 }
