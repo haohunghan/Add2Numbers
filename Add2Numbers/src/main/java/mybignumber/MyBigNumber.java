@@ -1,10 +1,11 @@
+
+
 /**
 *
 * @author Hao Nguyen
 * A function that add 2 very big number
 */
-
-package mybignumber;
+package test;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,6 +50,18 @@ public class MyBigNumber {
            s2 = "0";
        }
        
+       //Check 2 numbers is null
+       //If null, make it = "0"
+       if ( s1.equals("null") && !(s2.equals("null")) ) {
+    	   return s2;
+       }
+       if ( s2.equals("null") && !(s1.equals("null")) )  {
+    	   return s1;
+       }
+       if ( (s1.equals("null") && (s2.equals("null")) ) ) {
+    	   return "0";
+       }
+      
      //Check whether the number is negative
        if ( s1.charAt(0) == '-' && s2.charAt(0) != '-') {
            posError = 1;
