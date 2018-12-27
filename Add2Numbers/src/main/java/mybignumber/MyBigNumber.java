@@ -53,12 +53,15 @@ public class MyBigNumber {
        //Check 2 numbers is null
        //If null, make it = "0"
        if ( s1.equals("null") && !(s2.equals("null")) ) {
+	   this.ireceiver.sendMessage("0 + " + s2 + " = " + s2);
     	   return s2;
        }
        if ( s2.equals("null") && !(s1.equals("null")) )  {
+	   this.ireceiver.sendMessage("0 + " + s1 + " = " + s1;
     	   return s1;
        }
        if ( (s1.equals("null") && (s2.equals("null")) ) ) {
+	   this.ireceiver.sendMessage("0 + 0 = 0");     
     	   return "0";
        }
       
